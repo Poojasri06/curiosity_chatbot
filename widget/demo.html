@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat widget demo</title>
+<style>
+  /* A stand-in for an LMS page. The rules below are deliberately aggressive, like a heavy
+     site theme, to prove the widget is not affected by the page's own CSS. */
+  body { margin: 0; font: 16px/1.6 Georgia, serif; color: #333; background: #f5f7fa; }
+  header { padding: 20px 32px; background: #fff; border-bottom: 1px solid #e3e8ee; font: 700 20px/1 Georgia, serif; }
+  main { max-width: 760px; margin: 32px auto; padding: 0 24px; }
+  h1 { font-size: 32px; margin: 0 0 8px; }
+  a { color: #d6336c !important; text-decoration: underline !important; }
+  button, input, textarea, ul, li, p, h2, span { font-family: "Comic Sans MS", cursive !important; color: #d6336c !important;
+    background: #ffe8cc !important; border: 3px dashed red !important; margin: 7px !important; padding: 7px !important; }
+  .page-note { background: #fff; padding: 16px; border-radius: 8px; border: 1px solid #e3e8ee; }
+</style>
+</head>
+<body>
+<header>Demo LMS page</header>
+<main>
+  <h1>Welcome to the demo</h1>
+  <p class="page-note">This page stands in for a Curiosity LMS page. Its styles are intentionally ugly and aggressive.
+  The chat button in the corner should still look clean.</p>
+  <p><a href="#" onclick="CuriosityChat.open(); return false;">Open the assistant from a page link</a></p>
+</main>
+<script src="/widget.js" defer></script>
+</body>
+</html>

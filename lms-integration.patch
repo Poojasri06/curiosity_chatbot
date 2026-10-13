@@ -1,0 +1,45 @@
+diff --git a/config/chatbot.php b/config/chatbot.php
+new file mode 100644
+index 0000000..3577c13
+--- /dev/null
++++ b/config/chatbot.php
+@@ -0,0 +1,12 @@
++<?php
++
++return [
++    // Public https address of the Curi-Assist chatbot service, e.g. https://curi-assist.onrender.com
++    // Leave empty to keep the chatbot switched off.
++    'url' => rtrim((string) env('CHATBOT_URL', ''), '/'),
++
++    // Widget look. All optional.
++    'color' => env('CHATBOT_COLOR', '#0d6efd'),
++    'title' => env('CHATBOT_TITLE', 'Curi-Assist'),
++    'label' => env('CHATBOT_LABEL', 'Ask Curi-Assist'),
++];
+diff --git a/resources/views/frontend/infixlmstheme/partials/_chatbot.blade.php b/resources/views/frontend/infixlmstheme/partials/_chatbot.blade.php
+new file mode 100644
+index 0000000..57f84c7
+--- /dev/null
++++ b/resources/views/frontend/infixlmstheme/partials/_chatbot.blade.php
+@@ -0,0 +1,9 @@
++{{-- Curi-Assist chatbot widget. Renders nothing unless CHATBOT_URL is set in .env --}}
++@if (config('chatbot.url'))
++    <script src="{{ config('chatbot.url') }}/widget.js"
++            data-api="{{ config('chatbot.url') }}"
++            data-color="{{ config('chatbot.color') }}"
++            data-title="{{ config('chatbot.title') }}"
++            data-label="{{ config('chatbot.label') }}"
++            defer></script>
++@endif
+diff --git a/resources/views/frontend/infixlmstheme/partials/_footer.blade.php b/resources/views/frontend/infixlmstheme/partials/_footer.blade.php
+index 78a2060..ed0f1f8 100644
+--- a/resources/views/frontend/infixlmstheme/partials/_footer.blade.php
++++ b/resources/views/frontend/infixlmstheme/partials/_footer.blade.php
+@@ -437,6 +437,7 @@
+ 
+     </script>
+ </div>
++@include(theme('partials._chatbot'))
+ </body>
+ 
+ </html>
